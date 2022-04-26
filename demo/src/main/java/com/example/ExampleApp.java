@@ -24,5 +24,6 @@ public class ExampleApp {
     // student needs to write code to
     // do a reverse order traversal of the tree
     bst.printReverseOrder();
+    bst.print2D(bst);
   }
 }

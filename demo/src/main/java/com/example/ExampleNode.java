@@ -6,6 +6,7 @@ class Node {
   int value;
   Node left;
   Node right;
+  static final int COUNT = 10;
 
   // constructor
   Node(int value) {
@@ -79,11 +80,48 @@ class Node {
   // student needs to write code to
   // do a reverse-order traversal of the tree
   public void printReverseOrder(Node curr) {
-    System.out.printf("does nothing...");
+    
+    if (curr != null) {
+      printReverseOrder(curr.right);
+      System.out.printf("node value = %d\n", curr.value);
+      
+      printReverseOrder(curr.left);
+    }
   }
 
   // print, reverse-order
   public void printReverseOrder() {
     printReverseOrder(this);
   }
+
+  static void print2DUtil(Node root, int space)
+{
+    // Base case
+    if (root == null)
+        return;
+ 
+    // Increase distance between levels
+    space += COUNT;
+ 
+    // Process right child first
+    print2DUtil(root.right, space);
+ 
+    // Print current node after space
+    // count
+    System.out.print("\n");
+    for (int i = COUNT; i < space; i++)
+        System.out.print(" ");
+    System.out.print(root.value + "\n");
+ 
+    // Process left child
+    print2DUtil(root.left, space);
+}
+ 
+// Wrapper over print2DUtil()
+static void print2D(Node root)
+{
+    // Pass initial space count as 0
+    print2DUtil(root, 0);
+}
+
 }
